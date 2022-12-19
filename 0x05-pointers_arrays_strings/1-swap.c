@@ -1,12 +1,23 @@
-nclude "main.h"
+#include "main.h"
 
 /**
- * reset_to_98 - Set pointer param to 98.
+ * swap_int - swap the values of two integers
  *
- * @n: int type pointer
+ * @a: int pointer type
+ *
+ * @b: int pointer type
  */
 
-void reset_to_98(int *n)
+void swap_int(int *a, int *b)
+
 {
-	*n = 98;
+
+	int c;
+
+	c = *a;
+
+	*a = *b;
+
+	*b = c;
+
 }
