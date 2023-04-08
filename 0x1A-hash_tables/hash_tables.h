@@ -37,7 +37,6 @@ unsigned long int hash_djb2(const unsigned char *str);
 unsigned long int key_index(const unsigned char *key, unsigned long int size);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 char *hash_table_get(const hash_table_t *ht, const char *key);
-OB
 void hash_table_print(const hash_table_t *ht);
 void hash_table_delete(hash_table_t *ht);
 
@@ -60,16 +59,7 @@ typedef struct shash_node_s
 } shash_node_t;
 
 /**
- * Author: Aanuoluwapo Shodipo
- * Date Created: 08/04/2023
- * Last Modified: 08/04/2023
- *
- * Description
- * A function that creates a hash table.
- *
- * Usage
  * struct shash_table_s - Sorted hash table data structure
- * OA
  * @size: The size of the array
  * @array: An array of size @size
  * Each cell of this array is a pointer to the first node of a linked list,
