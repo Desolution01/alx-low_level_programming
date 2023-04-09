@@ -3,34 +3,32 @@
 /**
  * Author: Aanuoluwapo Shodipo
  * Date Created: 08/04/2023
- * Last Modified: 08/04/2023
- *
+ * Date Modified: 09/04/2023
  * Description
- * A function that retrieves a value associated with a key.
+ * hash_table_get - retrieves a value associated with a key
+ * @ht: hash table to look into
+ * @key: key of the value to retrieve
  *
- * Usage
- * hash_table_get - Retrieve the value associated with
- * a key in a hash table.
- * @ht: A pointer to the hash table.
- * @key: The key to get the value of.
- * Return: If the key cannot be matched - NULL.
- * Otherwise - the value associated with key in ht.
+ * Return: the value associated with the element,
+ * or NULL if key couldn’t be found
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	hash_node_t *node;
 	unsigned long int index;
+	hash_node_t *node = NULL;
 
-	if (ht == NULL || key == NULL || *key == '\0')
+	if (!ht || !key || !strcmp(key, ""))
 		return (NULL);
 
 	index = key_index((const unsigned char *)key, ht->size);
-	if (index >= ht->size)
-		return (NULL);
+	node = (ht->array)[index];
 
-	node = ht->array[index];
-	while (node && strcmp(node->key, key) != 0)
+	while (node)
+	{
+		if (!strcmp(node->key, (char *)key))
+			return (node->value);
 		node = node->next;
+	}
 
-	return ((node == NULL) ? NULL : node->value);
+	return (NULL);
 }
